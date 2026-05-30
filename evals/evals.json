@@ -1,5 +1,5 @@
 {
-  "version": "5.4.4",
+  "version": "5.4.5",
   "updated": "2026-05-30",
   "cases": [
     {
@@ -661,7 +661,7 @@
       "assertions": [
         "requires assets/skill-os-infographic.png",
         "requires assets/skill-map-cinematic.png",
-        "keeps generated infographic assets text-light",
+        "keeps generated infographic text readable or repeats it in Markdown",
         "keeps accessible Markdown explanation beside images"
       ],
       "failure_mode": "front page remains generic or SVG-only",
@@ -799,6 +799,21 @@
       "skills_expected_to_activate": [
         "seedance-pipeline",
         "seedance-recipes"
+      ]
+    },
+    {
+      "id": "visual_gallery_six_text_rich_assets",
+      "prompt": "The README visuals still look generic; add at least six beautiful hero and infographic images with readable text, including CDN and skill capability graphics.",
+      "expected_output": "README contains a generated bitmap visual gallery with at least six assets, including a command-center hero, global filmmaker hero, skill capability infographic, CDN delivery map, reference role map, production delivery map, and QC stack.",
+      "assertions": [
+        "requires at least six committed gallery PNG assets",
+        "includes CDN delivery map and skill capability infographic",
+        "keeps generated text readable and corrected",
+        "pairs every text-rich image with accessible Markdown"
+      ],
+      "failure_mode": "generic front page or unreadable infographic text",
+      "skills_expected_to_activate": [
+        "seedance-pipeline"
       ]
     }
   ]

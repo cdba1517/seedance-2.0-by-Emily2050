@@ -2,14 +2,14 @@
 
 The repository does not currently contain a standalone web app. The public frontend is the GitHub README, generated bitmap hero/infographic assets, and SVG support diagrams.
 
-## v5.4.2 Design Goals
+## v5.4.5 Design Goals
 
 - Lead with a real cinematic production-control hero instead of generic abstract graphics.
 - Show Seedance's practical range: references, first/last-frame continuity, product reveal, timeline control, audio, and camera direction.
-- Use generated cinematic infographics for both the operating-system overview and skill map.
-- Keep bitmap assets text-free so GitHub renders all important content as searchable Markdown.
+- Use generated cinematic infographics for the operating-system overview, skill map, skill capability map, CDN delivery map, reference role map, production delivery map, and QC stack.
+- Allow text-rich infographics when the text is large, corrected, visually balanced, and repeated in nearby searchable Markdown.
 - Keep SVG assets as support diagrams, not the primary emotional surface.
-- Validate README completeness and asset presence with `scripts/design_audit.py`.
+- Validate README completeness, gallery coverage, PNG dimensions, and asset presence with `scripts/design_audit.py`.
 
 ## v5.2 Design Goals
 
@@ -22,6 +22,13 @@ The repository does not currently contain a standalone web app. The public front
 
 ## Assets
 
+- `assets/hero-command-center.png`
+- `assets/hero-global-filmmaker-mode.png`
+- `assets/infographic-skill-capabilities.png`
+- `assets/infographic-cdn-delivery-map.png`
+- `assets/infographic-reference-role-map.png`
+- `assets/infographic-production-delivery.png`
+- `assets/infographic-professional-qc-stack.png`
 - `assets/hero-cinematic.png`
 - `assets/skill-os-infographic.png`
 - `assets/skill-map-cinematic.png`
@@ -35,5 +42,6 @@ The repository does not currently contain a standalone web app. The public front
 - Every SVG needs `<title>` and `<desc>`.
 - README should stay readable on mobile and dark mode.
 - Avoid dense badge walls and noisy decorative text.
-- Keep generated bitmap hero assets text-free; render all product/project text as real Markdown.
-- Keep the infographic text-light; README prose should explain the lanes with accessible Markdown.
+- Use text-rich generated infographics only for big, short labels that remain legible at README width.
+- Inspect every generated text image; reject garbled words, ugly typography, poor contrast, or placeholder-looking panels before commit.
+- Keep equivalent Markdown explanation beside every text-rich image so the repo remains accessible and searchable.

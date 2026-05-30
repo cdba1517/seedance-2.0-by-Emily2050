@@ -50,6 +50,7 @@ REQUIRED_IDS = {
     "audio_post_loudness_stems",
     "delivery_qc_preflight",
     "imf_localization_versioning",
+    "visual_gallery_six_text_rich_assets",
 }
 
 

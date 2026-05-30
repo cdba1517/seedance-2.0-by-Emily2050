@@ -1,4 +1,4 @@
-![Seedance 2.0 Skill OS cinematic hero: camera lens, reference frames, film strip, and audio waveform](assets/hero-cinematic.png)
+![Seedance 2.0 Skill OS cinematic command-center hero: brief, references, prompt, post, QC, subtitles, audio waveform, and shot cards](assets/hero-command-center.png)
 
 # Seedance 2.0 Skill OS
 
@@ -6,17 +6,17 @@
 
 Text-to-video · Image-to-video · Video-to-video · Reference-to-video · Audio-aware prompting · Copyright-safe rewrites · Agent Skills
 
-[![Version](https://img.shields.io/badge/version-5.4.4-111827?labelColor=0f172a)](#changelog)
+[![Version](https://img.shields.io/badge/version-5.4.5-111827?labelColor=0f172a)](#changelog)
 [![Skills](https://img.shields.io/badge/sub--skills-23-0ea5e9?labelColor=0f172a)](#skill-map)
 [![References](https://img.shields.io/badge/references-40-8b5cf6?labelColor=0f172a)](#reference-library)
-[![Evals](https://img.shields.io/badge/evals-51-22c55e?labelColor=0f172a)](#validation)
+[![Evals](https://img.shields.io/badge/evals-52-22c55e?labelColor=0f172a)](#validation)
 [![License](https://img.shields.io/badge/license-MIT-f59e0b?labelColor=0f172a)](LICENSE)
 
 Author: [Iamemily2050 (@iamemily2050)](https://github.com/Emily2040) · [Instagram](https://instagram.com/iamemily2050) · [X](https://x.com/iamemily2050) · [Website](https://iamemily2050.com)
 
 Platform context: [ByteDance Seedance 2.0](https://seed.bytedance.com/en/seedance2_0) · Dreamina · Jimeng · Doubao · [Volcengine Ark](https://www.volcengine.com/docs/82379/2291680?lang=zh) · [BytePlus ModelArk](https://docs.byteplus.com/en/docs/ModelArk/2291680) · [Runway Seedance 2](https://docs.dev.runwayml.com/guides/seedance/)
 
-Updated: **2026-05-30** · **v5.4.4 professional filmmaker workflow expansion**
+Updated: **2026-05-30** · **v5.4.5 visual stress-test gallery and professional infographic expansion**
 
 ---
 
@@ -103,7 +103,7 @@ The v5.4 release line adds a dated research layer for safer data mining and plat
 
 ![Seedance 2.0 Skill OS infographic: source registry, prompt router, multimodal references, safety gates, and eval loop](assets/skill-os-infographic.png)
 
-The visual map is intentionally text-light so it remains clean in GitHub and reusable in docs. It represents the six lanes this package keeps separate:
+The operating-system map stays simple for GitHub readability; the visual gallery below adds the text-rich professional infographics. Together they represent the six lanes this package keeps separate:
 
 - Research sources: dated official, academic, platform, and community evidence.
 - Production spine: brief, shot list, continuity, post handoff, localization, and delivery/QC.
@@ -111,6 +111,28 @@ The visual map is intentionally text-light so it remains clean in GitHub and reu
 - Multimodal references: image, video, audio, first-frame, last-frame, and role-bound assets.
 - Safety gates: IP, likeness, voice, brand, real-person, filter, and platform-policy checks.
 - Quality evals: schema checks, source freshness, vocabulary integrity, design audit, and behavior cases.
+
+## Visual Gallery
+
+The README now includes a committed visual set rather than a single generic hero. These generated bitmap assets are paired with searchable Markdown so the images can be cinematic while the repo remains auditable.
+
+### Hero Shots
+
+![Seedance 2.0 command-center hero showing brief, references, prompt, post, QC, subtitles, audio waveform, and shot cards](assets/hero-command-center.png)
+
+![Global filmmaker mode hero showing director, DP, editor, colorist, sound mixer, localization lead, and QC lead on a cinematic production stage](assets/hero-global-filmmaker-mode.png)
+
+### Text-Rich Infographics
+
+![What this skill can do infographic: brief, references, prompt, generate, post, deliver](assets/infographic-skill-capabilities.png)
+
+![CDN video delivery map infographic: creator, origin, CDN edge, global review, delivery, fast playback, regional cache, version control, and QC before publish](assets/infographic-cdn-delivery-map.png)
+
+![Reference role map infographic: image equals identity, video equals motion, audio equals timing](assets/infographic-reference-role-map.png)
+
+![Production to delivery infographic: brief, shot list, generate, edit, localize, QC](assets/infographic-production-delivery.png)
+
+![Professional QC stack infographic: picture, color, audio, text, rights, metadata](assets/infographic-professional-qc-stack.png)
 
 ## Skill Map
 
@@ -241,11 +263,11 @@ The CI workflow runs the same checks on push and pull request.
 
 ## Design Standard
 
-The v5.4 front page uses a generated cinematic bitmap hero, a generated operating-system infographic, a generated cinematic skill-map infographic, and the cleaned v5.2 information architecture. The README should stay readable in GitHub mobile, dark mode, and narrow widths. SVG assets must include `<title>` and `<desc>` elements, use internal CSS only, and avoid external fonts or scripts. See [`docs/frontend-redesign.md`](docs/frontend-redesign.md).
+The v5.4.5 front page uses multiple generated cinematic bitmap hero shots, text-rich infographics, a generated operating-system infographic, a generated cinematic skill-map infographic, and the cleaned v5.2 information architecture. The README should stay readable in GitHub mobile, dark mode, and narrow widths. SVG assets must include `<title>` and `<desc>` elements, use internal CSS only, and avoid external fonts or scripts. See [`docs/frontend-redesign.md`](docs/frontend-redesign.md).
 
 ## Changelog
 
-See [`CHANGELOG.md`](CHANGELOG.md). Current release: **v5.4.4**.
+See [`CHANGELOG.md`](CHANGELOG.md). Current release: **v5.4.5**.
 
 ## License
 

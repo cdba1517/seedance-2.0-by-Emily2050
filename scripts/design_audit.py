@@ -3,7 +3,59 @@ from __future__ import annotations
 
 import argparse
 import re
+import struct
 from pathlib import Path
+
+
+GALLERY_ASSETS = [
+    "assets/hero-command-center.png",
+    "assets/hero-global-filmmaker-mode.png",
+    "assets/infographic-skill-capabilities.png",
+    "assets/infographic-cdn-delivery-map.png",
+    "assets/infographic-reference-role-map.png",
+    "assets/infographic-production-delivery.png",
+    "assets/infographic-professional-qc-stack.png",
+]
+
+CORE_BITMAP_ASSETS = [
+    *GALLERY_ASSETS,
+    "assets/hero-cinematic.png",
+    "assets/skill-os-infographic.png",
+    "assets/skill-map-cinematic.png",
+]
+
+
+def png_dimensions(path: Path) -> tuple[int, int] | None:
+    with path.open("rb") as handle:
+        header = handle.read(24)
+    if len(header) < 24 or header[:8] != b"\x89PNG\r\n\x1a\n" or header[12:16] != b"IHDR":
+        return None
+    return struct.unpack(">II", header[16:24])
+
+
+def check_png_asset(
+    root: Path,
+    rel: str,
+    label: str,
+    errors: list[str],
+    *,
+    min_bytes: int = 100_000,
+    min_width: int = 1200,
+    min_height: int = 650,
+) -> None:
+    path = root / rel
+    if not path.exists():
+        errors.append(f"missing asset: {rel}")
+        return
+    if path.stat().st_size < min_bytes:
+        errors.append(f"{rel} appears too small for a real {label} image")
+    size = png_dimensions(path)
+    if size is None:
+        errors.append(f"{rel} is not a valid PNG")
+        return
+    width, height = size
+    if width < min_width or height < min_height:
+        errors.append(f"{rel} is too small for README display ({width}x{height})")
 
 
 def main() -> int:
@@ -27,12 +79,19 @@ def main() -> int:
         if long_lines:
             errors.append("README.md has lines over 500 chars: " + ", ".join(map(str, long_lines[:10])))
         for required in [
-            "assets/hero-cinematic.png",
+            "assets/hero-command-center.png",
+            "assets/hero-global-filmmaker-mode.png",
             "assets/skill-os-infographic.png",
             "assets/skill-map-cinematic.png",
             "## What This Skill Does",
             "## Professional Filmmaker Scope",
             "## Operating System At A Glance",
+            "## Visual Gallery",
+            "### Hero Shots",
+            "### Text-Rich Infographics",
+            "CDN video delivery map",
+            "What this skill can do",
+            "Professional QC stack",
             "## Start Here",
             "## Skill Map",
             "api-workflow.md",
@@ -45,27 +104,31 @@ def main() -> int:
         ]:
             if required not in text:
                 errors.append(f"README.md missing `{required}`")
+        gallery_count = sum(1 for rel in GALLERY_ASSETS if rel in text)
+        if gallery_count < 6:
+            errors.append(f"README.md must reference at least six visual-gallery PNG assets ({gallery_count} found)")
+        for rel in GALLERY_ASSETS:
+            if rel not in text:
+                errors.append(f"README.md missing gallery asset `{rel}`")
 
-    if not (root / "docs" / "frontend-redesign.md").exists():
+    redesign_doc = root / "docs" / "frontend-redesign.md"
+    if not redesign_doc.exists():
         errors.append("missing docs/frontend-redesign.md")
+    else:
+        doc_text = redesign_doc.read_text(encoding="utf-8").lower()
+        if "text-rich infographics" not in doc_text or "infographic-cdn-delivery-map.png" not in doc_text:
+            errors.append("docs/frontend-redesign.md missing v5.4.5 text-rich gallery guidance")
 
-    hero = root / "assets" / "hero-cinematic.png"
-    if not hero.exists():
-        errors.append("missing asset: assets/hero-cinematic.png")
-    elif hero.stat().st_size < 100_000:
-        errors.append("assets/hero-cinematic.png appears too small for a real hero image")
+    design_system = root / "references" / "frontend-design-system.md"
+    if not design_system.exists():
+        errors.append("missing references/frontend-design-system.md")
+    else:
+        ds_text = design_system.read_text(encoding="utf-8").lower()
+        if "text-rich infographics" not in ds_text or "reject garbled" not in ds_text:
+            errors.append("references/frontend-design-system.md missing text-rich infographic quality rules")
 
-    infographic = root / "assets" / "skill-os-infographic.png"
-    if not infographic.exists():
-        errors.append("missing asset: assets/skill-os-infographic.png")
-    elif infographic.stat().st_size < 100_000:
-        errors.append("assets/skill-os-infographic.png appears too small for a real infographic image")
-
-    skill_map = root / "assets" / "skill-map-cinematic.png"
-    if not skill_map.exists():
-        errors.append("missing asset: assets/skill-map-cinematic.png")
-    elif skill_map.stat().st_size < 100_000:
-        errors.append("assets/skill-map-cinematic.png appears too small for a real skill-map image")
+    for rel in CORE_BITMAP_ASSETS:
+        check_png_asset(root, rel, "README visual", errors)
 
     for rel in ["assets/hero-dark.svg", "assets/hero-light.svg", "assets/skill-map.svg"]:
         path = root / rel

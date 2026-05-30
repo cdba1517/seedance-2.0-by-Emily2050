@@ -2,6 +2,20 @@
 
 All notable changes to this project are documented here.
 
+## [5.4.5] — 2026-05-30
+
+### Added
+
+- Added seven generated visual-gallery assets: two cinematic hero shots and five text-rich infographics for skill capabilities, CDN delivery, reference roles, production delivery, and QC.
+- Added README visual-gallery coverage so the front page shows the skill as a professional filmmaker operating system instead of a single generic image.
+- Added eval coverage for the six-plus-image visual-gallery requirement.
+
+### Changed
+
+- Updated the README hero, badges, design standard, frontend redesign notes, and frontend design-system rules for text-rich infographic assets.
+- Strengthened `scripts/design_audit.py` to require the visual gallery, validate PNG headers, enforce minimum dimensions, and fail stale visual guidance.
+- Bumped active skill metadata, validator expectations, and eval metadata to v5.4.5.
+
 ## [5.4.4] — 2026-05-30
 
 ### Added
